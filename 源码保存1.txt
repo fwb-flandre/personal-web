@@ -1,0 +1,159 @@
+<template>
+<!-- vue 在 template 内写 html 内容 -->
+  <div class="index" @mousemove="touchmove" @click="fun">
+    <h1>{{ msg }}</h1>
+    <div class="circle" v-bind:style = "circle_style" @click="touchclick"></div>
+    <transition name = "fade">
+      <div id="ui" v-show = "show">
+        <router-link :to="{name:'collector'}" tag="div" id="navigation1" class="navigation">
+          网络收藏夹
+        </router-link>
+        <router-link :to="{name:'album'}" tag="div" id="navigation2" class="navigation">
+          相册
+        </router-link>
+        <router-link :to="{name:'hello'}" tag="div" id="navigation3" class="navigation"></router-link>
+        <router-link :to="{name:'hello'}" tag="div" id="navigation4" class="navigation"></router-link>
+        <router-link :to="{name:'hello'}" tag="div" id="navigation5" class="navigation"></router-link>
+        <router-link :to="{name:'hello'}" tag="div" id="navigation6" class="navigation"></router-link>
+        <router-link :to="{name:'hello'}" tag="div" id="navigation7" class="navigation"></router-link>
+      </div>
+    </transition>
+  </div>
+</template>
+
+<script>
+// export default 只是为了导出，类似 new Vue()
+export default {
+  name: 'index',
+  data () {
+    return {
+      msg: 'Welcome to Yor Vue.js App',
+      show: false,
+      offset: 0,
+      // 内联样式绑定，使用方法（v-bind:style = "[baseStyles]"）
+      circle_style: {
+        // 水平居中
+        margin: 'auto',
+        // 垂直居中
+        position: 'absolute',
+        left: '0px',
+        right: '0px',
+        top: '0px',
+        bottom: '0px'
+      }
+    }
+  },
+  // 页面完全渲染后执行该生命周期函数
+  mounted () {
+    // 隐藏滚动条
+    document.body.parentNode.style.overflowY = 'hidden'
+    // 将 firstname 属性传到 服务器端的 req.body 上
+    this.axios.post('http://127.0.0.1:8080/api/log', {
+      firstName: 'Fred'
+    })
+      .then(response => {
+        this.msg = response.data.name
+        console.log(response.data.name)
+      })
+  },
+  methods: {
+    // 鼠标移动时触发该方法
+    touchmove (e) {
+      // 获取当前鼠标位置距离浏览器居中位置距离
+      var mouseX = e.clientX - document.getElementsByClassName('index')[0].offsetWidth / 2
+      var mouseY = e.clientY - document.getElementsByClassName('index')[0].offsetHeight / 2
+      this.circle_style.right = mouseX / 6 + this.offset + 'px'
+      this.circle_style.bottom = mouseY / 6 + 'px'
+    },
+    touchclick () {
+      // 点击圆心使圆心向左移动
+      var timeUpdate = setInterval(() => {
+        if (this.offset < document.getElementsByClassName('index')[0].offsetWidth / 3) {
+          this.offset = this.offset + 10
+          this.circle_style.right = this.offset + 'px'
+        } else {
+          clearInterval(timeUpdate)
+        }
+      }, 6)
+      this.show = true
+    },
+    // 检测当前鼠标点击时坐标
+    fun (e) {
+      console.log(e.clientX)
+      console.log(e.clientY)
+    }
+  }
+}
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+/* 过渡 */
+.fade-enter-active{
+    transition: opacity 0.8s
+}
+.fade-enter{
+    opacity: 0
+}
+.index{
+  height: 100%;
+  width: 100%;
+}
+.ground{
+  height: 100%;
+  width: 100%;
+}
+.circle{
+  width: 600px;
+  height: 600px;
+  background: yellow;
+  border-radius: 600px;
+}
+#ui{
+  width: 35%;
+  height: 80%;
+  position: absolute;
+  top: 100px;
+  left: 60%;
+}
+.navigation{
+  width: 80%;
+  height: 12%;
+  margin: 10px;
+  background-color: green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "NSimSun";
+  font-size: 50px;
+}
+#navigation1{
+  background-color: green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "NSimSun";
+  font-size: 50px;
+}
+#navigation2{
+  margin-left: 18%;
+  background-color: green;
+}
+#navigation3{
+  background-color: green;
+}
+#navigation4{
+  margin-left: 18%;
+  background-color: green;
+}
+#navigation5{
+  background-color: green;
+}
+#navigation6{
+  margin-left: 18%;
+  background-color: green;
+}
+#navigation7{
+  background-color: green;
+}
+</style>
