@@ -5,7 +5,7 @@ var session = require('express-session')
 var cookieParser = require('cookie-parser')
 var Store = require('express-mysql-session')
 var router = require('./router')
-var database = require('./models/mysql.config')// 引入数据库配置模块中的数据
+var database = require('./models/web.config')// 引入数据库配置模块中的数据
 
 var app = express()
 

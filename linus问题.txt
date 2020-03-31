@@ -1,0 +1,9 @@
+上传：rz
+nginx开启：./nginx
+nginx关闭：./nginx -s stop
+查看当前目录：ls
+删除：rm -rf
+进入上一级目录：cd ..
+nginx位置：/usr/local/nginx
+服务器端文件位置：/home/personal-web/server
+解压：unzip
