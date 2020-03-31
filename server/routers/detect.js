@@ -191,8 +191,8 @@ router.get('/checkLanding', function (req, res) {
 router.post('/sms', function (req, res) {
   let body = req.body
   let str = getRandom()
-  const accessKeyId = 'LTAI4FbsgUFk1Fs5n2HXucpJ';
-  const secretAccessKey = 'NbQvqmPRY8io8yzb7V7LHAJMMxM3HI';
+  const accessKeyId = '';
+  const secretAccessKey = '';
   // 初始化sms_client
   let smsClient = new SMSClient({accessKeyId, secretAccessKey});
       // 发送短信
