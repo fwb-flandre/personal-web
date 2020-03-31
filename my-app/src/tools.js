@@ -1,8 +1,8 @@
 var SMSClient = require('@alicloud/sms-sdk')
 
 export function faceFormdata (url) {
-  const apiKey = 'OFoe-8A0f2OH-WLv7kzzfumCurSxozSs'
-  const apiSecret = '7BWYRR2L6s7DR9R3i2zZrVkXSdumpKDa'
+  const apiKey = ''
+  const apiSecret = ''
   const imageUrl = url
   const formdata = new FormData()
   formdata.append('api_key', apiKey)
@@ -15,8 +15,8 @@ export function faceFormdata (url) {
 // 此方法不如调用后台中的 api
 export function sendSms (phone) {
   let str = '111'
-  const accessKeyId = 'LTAI4FbsgUFk1Fs5n2HXucpJ'
-  const secretAccessKey = 'NbQvqmPRY8io8yzb7V7LHAJMMxM3HI'
+  const accessKeyId = ''
+  const secretAccessKey = ''
   // 初始化sms_client
   let smsClient = new SMSClient({accessKeyId, secretAccessKey})
   // 发送短信
