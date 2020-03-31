@@ -1,9 +1,0 @@
-上传步骤：
-git add . :项目添加到仓库
-git commit -m "注释内容" ：把项目提交到仓库
-git remote add origin https://github.com/fwb-flandre/personal-web.git :将本地仓库和远程仓库进行关联
-git push -u origin master :把本地仓库的项目推送到远程仓库（也就是github）上
-（若最后一步出现错误，原因是git服务器中的README.md文件不在本地代码目录中，要输入git pull --rebase origin master）
-
-在服务器上：
-git clone https://github.com/fwb-flandre/personal-web.git :即可将仓库全部内容克隆到服务器上
