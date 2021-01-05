@@ -16,7 +16,7 @@
   "dependencies": {
     "@alicloud/sms-sdk": "^1.1.6",
     "ajv": "^6.12.0",
-    "axios": "0.19.0",
+    "axios": "0.21.1",
     "clipboard": "^2.0.4",
     "element-ui": "^2.13.0",
     "express": "^4.17.1",
